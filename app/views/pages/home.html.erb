@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div id="homepage" class="container p-5 d-flex flex-column align-items-center justify-content-center">
+  <div class="text-center">
+    <h1 class="display-1">Plan Master 5000</h1>
+    <p>Use this web tool to create a list of tasks. You can give them titles, details, estimated duration, and mark them as complete.</p>
+    <%= link_to "My task list", plan_tasks_path, class: "btn btn-primary" %>
+  </div>
+</div>
