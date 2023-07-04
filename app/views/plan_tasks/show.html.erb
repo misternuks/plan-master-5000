@@ -1,1 +1,18 @@
-Yo what up
+<div class="container p-5">
+  <div class="card p-5 position-relative">
+    <h3><%= @task.title.upcase %></h3>
+    <hr>
+    <p><strong>Details:</strong> <%= @task.details %></p>
+    <hr>
+    <p><strong>Estimated time needed:</strong> <%= @task.time %> hour(s)</p>
+    <hr>
+    <p>This task has <strong><%= @task.completed? ? "" : "not" %></strong> been completed.</p>
+    <%= link_to plan_task_path(@task), data: { turbo_method: :delete, turbo_confirm: "Delete #{@task.title}?" }, class: 'position-absolute bottom-0 end-0 mb-2 mx-2 text-decoration-none text-secondary' do %>
+      <i class="fa-solid fa-trash"></i>
+    <% end %>
+    <%= link_to edit_plan_task_path(@task), class: 'position-absolute bottom-0 end-0 mb-2 mx-5 text-decoration-none text-secondary' do %>
+      <i class="fa-solid fa-pencil"></i>
+    <% end %>
+  </div>
+  <%= link_to '< Back to the tasks', plan_tasks_path, class: 'btn btn-secondary mt-3' %>
+</div>

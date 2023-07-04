@@ -1,0 +1,7 @@
+<%= simple_form_for @task do |f| %>
+  <%= f.input :title %>
+  <%= f.input :details %>
+  <%= f.input :time, collection: 1..24, prompt: "Anticipate the number of hours the task will take:" %>
+  <%= f.input :completed, as: :boolean %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
