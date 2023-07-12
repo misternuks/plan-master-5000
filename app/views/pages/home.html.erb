@@ -1,7 +1,11 @@
-<div id="homepage" class="container p-5 d-flex flex-column align-items-center justify-content-center">
+<div id="homepage" class="container p-5 my-5 d-flex flex-column align-items-center justify-content-center">
   <div class="text-center">
-    <h1 class="display-1">Plan Master 5000</h1>
-    <h3>Use this web tool to create a list of tasks.</h3>
-    <%= link_to "My task list", plan_tasks_path, class: "btn btn-primary" %>
+    <h1>Plan Master 5000</h1>
+    <% if user_signed_in? %>
+      <%= link_to "Go to my task list", plan_tasks_path, class: "btn btn-primary w-75" %>
+    <% else %>
+      <h3>Create an account or log in to plan your tasks.</h3>
+      <%= link_to "Go to login page", user_session_path, class: "btn btn-primary w-75" %>
+    <% end %>
   </div>
 </div>

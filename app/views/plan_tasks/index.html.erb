@@ -1,16 +1,16 @@
-<div class="p-5 container">
+<div class="p-5 container my-5">
   <div class="card p-5 flex-column d-flex align-items-center justify-content-center">
     <h5>Your Pending Tasks</h5>
     <% @tasks.each do |task| %>
       <% if !task.completed? %>
-        <%= link_to task.title, plan_task_path(task), class: "btn btn-primary mt-1 shadow w-75" %>
+        <%= link_to task.title, plan_task_path(task), class: "btn btn-light border-primary mt-1 w-75" %>
       <% end %>
     <% end %>
-    <%= link_to "+ Create a new task", new_plan_task_path, class: "btn btn-light mt-1 shadow w-75" %>
+    <%= link_to "+ Create a new task", new_plan_task_path, class: "btn btn-primary mt-1 w-75" %>
     <h5 class="mt-5">Your Completed Tasks</h5>
     <% @tasks.each do |task| %>
       <% if task.completed? %>
-        <%= link_to task.title, plan_task_path(task), class: "btn btn-secondary mt-1 shadow w-75" %>
+        <%= link_to task.title, plan_task_path(task), class: "btn btn-secondary mt-1 w-75" %>
       <% end %>
     <% end %>
   </div>

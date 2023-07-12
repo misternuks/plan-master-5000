@@ -7,10 +7,10 @@
     <p><strong>Estimated time needed:</strong> <%= @task.time %> hour(s)</p>
     <hr>
     <p>This task has <strong><%= @task.completed? ? "" : "not" %></strong> been completed.</p>
-    <%= link_to plan_task_path(@task), data: { turbo_method: :delete, turbo_confirm: "Delete #{@task.title}?" }, class: 'position-absolute bottom-0 end-0 mb-2 mx-2 text-decoration-none text-secondary' do %>
+    <%= link_to plan_task_path(@task), data: { turbo_method: :delete, turbo_confirm: "Delete #{@task.title}?" }, class: 'position-absolute bottom-0 end-0 mb-3 mx-3 text-decoration-none text-secondary' do %>
       <i class="fa-solid fa-trash"></i>
     <% end %>
-    <%= link_to edit_plan_task_path(@task), class: 'position-absolute bottom-0 end-0 mb-2 mx-5 text-decoration-none text-secondary' do %>
+    <%= link_to edit_plan_task_path(@task), class: 'position-absolute bottom-0 end-0 mb-3 mx-5 text-decoration-none text-secondary' do %>
       <i class="fa-solid fa-pencil"></i>
     <% end %>
   </div>
