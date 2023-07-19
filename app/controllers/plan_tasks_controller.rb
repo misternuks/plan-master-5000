@@ -42,6 +42,6 @@ class PlanTasksController < ApplicationController
   private
 
   def plan_task_params
-    params.require(:plan_task).permit(:title, :details, :time, :completed)
+    params.require(:plan_task).permit(:title, :details, :date, :completed)
   end
 end

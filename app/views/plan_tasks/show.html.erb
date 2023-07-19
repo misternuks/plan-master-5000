@@ -4,9 +4,9 @@
     <hr>
     <p><strong>Details:</strong> <%= @task.details %></p>
     <hr>
-    <p><strong>Estimated time needed:</strong> <%= @task.time %> hour(s)</p>
+    <p>This task<strong> has <%= @task.completed? ? "" : "not" %></strong> been completed.</p>
     <hr>
-    <p>This task has <strong><%= @task.completed? ? "" : "not" %></strong> been completed.</p>
+    <p><strong>Completion date and time:</strong> <%= @task.date %></p>
     <%= link_to plan_task_path(@task), data: { turbo_method: :delete, turbo_confirm: "Delete #{@task.title}?" }, class: 'position-absolute bottom-0 end-0 mb-3 mx-3 text-decoration-none text-secondary' do %>
       <i class="fa-solid fa-trash"></i>
     <% end %>
