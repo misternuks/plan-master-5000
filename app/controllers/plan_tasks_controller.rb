@@ -13,7 +13,6 @@ class PlanTasksController < ApplicationController
 
   def create
     @task = PlanTask.new(plan_task_params)
-    @task.user = current_user
     if @task.save
       redirect_to plan_task_path(@task)
     else

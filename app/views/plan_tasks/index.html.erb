@@ -1,16 +1,81 @@
-<div class="p-5 container my-5">
-  <div class="card p-5 flex-column d-flex align-items-center justify-content-center">
-    <h5>Your Pending Tasks</h5>
-    <% @tasks.each do |task| %>
-      <% if !task.completed? %>
-        <%= link_to task.title, plan_task_path(task), class: "btn btn-light border-primary mt-1 w-75" %>
+<div class='py-5 px-4 bg-warning text-white'>
+  <h1>Plan Master 5000</h1>
+  <h3>Create, track, and complete tasks.</h3>
+  <%= link_to "Create a new task", new_plan_task_path, class: 'btn btn-info mt-3' %>
+</div>
+<div class='m-3 p-3'>
+  <h5>Tasks remaining:</h5>
+  <table class='table'>
+    <%= render 'plan_tasks/table_head' %>
+    <tbody>
+      <% count = 0  %>
+      <% @tasks.each do |task| %>
+        <% unless task.completed %>
+          <tr class='bg-white'>
+            <th scope='row'><%= count += 1 %></th>
+            <td><%= task.title %></td>
+            <td><%= task.details %></td>
+            <td>
+              <%= link_to edit_plan_task_path(task), class: 'btn' do %>
+                <i class="fa-solid fa-pen-to-square"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to plan_task_path(task), data: { turbo_method: :delete, turbo_confirm: "Delete #{task.title}?" }, class: 'btn' do %>
+                <i class="fa-solid fa-trash"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
+    </tbody>
+  </table>
+  <hr>
+  <h5>Completed tasks:</h5>
+  <table class='table'>
+    <%= render 'plan_tasks/table_head' %>
+    <tbody>
+      <% count = 0  %>
+      <% @tasks.each do |task| %>
+        <% if task.completed %>
+          <tr class='bg-grey '>
+            <th scope='row'><%= count += 1 %></th>
+            <td><%= task.title %></td>
+            <td><%= task.details %></td>
+            <td>
+              <%= link_to edit_plan_task_path(task), class: 'btn' do %>
+                <i class="fa-solid fa-pen-to-square"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to plan_task_path(task), data: { turbo_method: :delete, turbo_confirm: "Delete #{task.title}?" }, class: 'btn' do %>
+                <i class="fa-solid fa-trash"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%# contact / social media stuff below: %>
+<hr>
+<div class="d-flex justify-content-center align-items-baseline mx-3 mb-3 flex-wrap">
+  <div>
+    <p>Created by Matthew Miner, 2023. Check me out: </p>
+  </div>
+  <div>
+    <%= link_to "https://www.matthewgedminer.com", target: '_blank', class: 'btn btn-lg' do %>
+      <i class='fa-solid fa-globe'></i>
     <% end %>
-    <%= link_to "+ Create a new task", new_plan_task_path, class: "btn btn-primary mt-1 w-75" %>
-    <h5 class="mt-5">Your Completed Tasks</h5>
-    <% @tasks.each do |task| %>
-      <% if task.completed? %>
-        <%= link_to task.title, plan_task_path(task), class: "btn btn-secondary mt-1 w-75" %>
-      <% end %>
+    <%= mail_to 'misternuks@gmail.com', '', class: 'btn btn-lg' do %>
+      <i class='fa-solid fa-envelope'></i>
+    <% end %>
+    <%= link_to 'https://github.com/misternuks/', target: '_blank', class: 'btn btn-lg' do %>
+      <i class='fa-brands fa-github'></i>
+    <% end %>
+    <%= link_to 'https://www.linkedin.com/in/matthew-ged-miner/', target: '_blank', class: 'btn btn-lg' do %>
+      <i class='fa-brands fa-linkedin'></i>
     <% end %>
   </div>
+</div>
