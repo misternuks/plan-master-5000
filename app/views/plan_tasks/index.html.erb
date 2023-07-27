@@ -1,6 +1,7 @@
 <div class='py-5 px-4 bg-warning text-white'>
   <h1>Plan Master 5000</h1>
   <h3>Create, track, and complete tasks.</h3>
+  <h5>(This is a demonstration web app as part of my porfolio and therefore does not require user authentication / authorization.)</h5>
   <%= link_to "Create a new task", new_plan_task_path, class: 'btn btn-info mt-3' %>
 </div>
 <div class='m-3 p-3'>
@@ -22,7 +23,11 @@
           <tr class='bg-white'>
             <th scope='row'><%= count += 1 %></th>
             <td><%= task.title %></td>
-            <td><%= task.details %></td>
+            <td>
+              <%= link_to plan_task_path(task), class: 'btn' do %>
+                <i class="fa-solid fa-circle-info"></i>
+              <% end %>
+            </td>
             <td>
               <%= link_to edit_plan_task_path(task), class: 'btn' do %>
                 <i class="fa-solid fa-pen-to-square"></i>
@@ -45,8 +50,8 @@
       <tr>
         <th scope='col'>#</th>
         <th scope='col'>Task</th>
-        <th scope='col'>Details</th>
         <th scope='col'>Date Completed</th>
+        <th scope='col'>Details</th>
         <th scope='col'>Edit</th>
         <th scope='col'>Delete</th>
       </tr>
@@ -58,8 +63,12 @@
           <tr class='bg-grey '>
             <th scope='row'><%= count += 1 %></th>
             <td><%= task.title %></td>
-            <td><%= task.details %></td>
             <td><%= task.date %></td>
+            <td>
+              <%= link_to plan_task_path(task), class: 'btn' do %>
+                <i class="fa-solid fa-circle-info"></i>
+              <% end %>
+            </td>
             <td>
               <%= link_to edit_plan_task_path(task), class: 'btn' do %>
                 <i class="fa-solid fa-pen-to-square"></i>
